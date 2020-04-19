@@ -5,7 +5,7 @@ class Media {
     constructor(title){
         this._title = title;
         this._isCheckedOut = false;
-        this.ratings = [];
+        this._ratings = [ ];
     }
     //creating a getters for tittle, isChechedOut and ratings
   // criando getters para title, isChechedOut e ratings
@@ -28,7 +28,7 @@ class Media {
  // valores salvos na propriedade _isCheckedOut
 
     toggleCheckOutStatus(){
-        this._isCheckedOut  = !this._isCheckedOut;
+        this._isCheckedOut  = !this._isCheckedOutisCheckedOut;
     }
 
     //creating a method getAverageRating that
@@ -42,7 +42,7 @@ class Media {
         return ratingsSum;
     }
 
-//creating a method addRating
+//creating a method addRating 
 
 // criando um método addRating
 
@@ -81,6 +81,63 @@ class Book extends Media {
 class Movie extends Media {
     constructor(director, title, runTime){
         super(title);
-        this._director = 
+        this._director = director;
+        this._runTime = runTime;
     }
+
+    //creating a getters for director and runTime
+    get director(){
+        return this._director;
+    }
+
+    get runTime() {
+        return this._runTime;
+    }
+
 }
+
+//creating a Book instance with the following properties
+const historyOfEverything = new Book('Bill Bryson', 'A Short History of Nearly Everything', 544);
+
+//calling. toglleCheckOutStatus() on the historyOfEverything instance
+historyOfEverything.toggleCheckOutStatus();
+
+//log the value
+console.log(historyOfEverything.isCheckedOut);
+
+//call .aaddRating 14 / 3 = 4.666666666666667
+
+historyOfEverything.addRating(4);
+historyOfEverything.addRating(5);
+historyOfEverything.addRating(5);
+historyOfEverything.getAverageRating();
+
+13
+
+//log the result 
+console.log(historyOfEverything.getAverageRating());
+
+//creating a Movie instance with the following properties
+
+const speed = new Movie('Jan de Bont', 'Speed', 166);
+
+//Call .toggleCheckOutStatus() on the speed instance
+speed.toggleCheckOutStatus();
+
+//log the value
+
+console.log(speed.isCheckedOut);
+
+//call .addRating
+
+speed.addRating(1);
+speed.addRating(1);
+speed.addRating(5);
+speed.getAverageRating();
+
+//log the result
+
+console.log(speed.getAverageRating());
+
+console.log(historyOfEverything);
+console.log(speed);
